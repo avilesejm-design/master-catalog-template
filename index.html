@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=3.0">
+    <meta name="referrer" content="no-referrer">
+    <title>Catálogo Inteligente | Nombre del Negocio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* COLORES EDITABLES: Cambiá esto para cada cliente */
+            --color-primario: #000000;
+            --color-secundario: #666666;
+            --color-fondo: #f8f9fa;
+            --color-tarjeta: #ffffff;
+            --color-acento: #25d366; /* Color WhatsApp */
+        }
+
+        body { 
+            margin: 0; 
+            font-family: 'Inter', sans-serif; 
+            background: var(--color-fondo); 
+            color: var(--color-primario);
+        }
+
+        header { 
+            padding: 40px 20px; 
+            text-align: center; 
+            background: var(--color-tarjeta); 
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: #eee;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8em;
+            color: #aaa;
+            border: 2px dashed #ccc;
+        }
+
+        h1 { margin: 0; font-size: 1.8em; text-transform: uppercase; letter-spacing: 1px; }
+        .subtitle { color: var(--color-secundario); font-size: 0.9em; margin-top: 5px; }
+
+        .search-container {
+            max-width: 500px;
+            margin: 20px auto 0;
+            padding: 0 20px;
+        }
+
+        #buscador {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        #buscador:focus { border-color: var(--color-primario); box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+
+        /* GRILLA */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--color-tarjeta);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+
+        .img-box {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .img-box img { width: 100%; height: 100%; object-fit: contain; display: none; }
+        .img-box img.active { display: block; }
+
+        .info { padding: 20px; text-align: left; flex-grow: 1; }
+        .info h3 { margin: 0; font-size: 1.2em; color: var(--color-primario); }
+        .info .detalle { color: var(--color-secundario); font-size: 0.85em; margin: 8px 0; min-height: 40px; }
+        .info .precio { font-size: 1.3em; font-weight: 800; color: var(--color-primario); }
+
+        .btn-ws {
+            display: block;
+            background: var(--color-primario);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-ws:hover { opacity: 0.8; }
+
+        /* ZOOM MODAL */
+        #zoom-modal { 
+            display: none; position: fixed; z-index: 999; top: 0; left: 0; 
+            width: 100%; height: 100%; background: rgba(255,255,255,0.98); 
+        }
+        #zoom-wrapper { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        #zoom-img { max-width: 90%; max-height: 90%; transition: 0.1s; transform-origin: center; cursor: zoom-out; }
+
+        footer { text-align: center; padding: 40px; font-size: 0.8em; color: var(--color-secundario); }
+
+        /* Navegación de fotos */
+        .nav-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.8); border: 1px solid #ddd; width: 35px; height: 35px;
+            border-radius: 50%; cursor: pointer; font-size: 18px; z-index: 10;
+        }
+        .prev { left: 10px; } .next { right: 10px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-placeholder">TU LOGO</div>
+    <h1 id="shop-name">Nombre del Negocio</h1>
+    <p class="subtitle">Catálogo de productos actualizado</p>
+    <div class="search-container">
+        <input type="text" id="buscador" placeholder="Buscar productos..." onkeyup="filtrar()">
+    </div>
+</header>
+
+<div class="grid" id="main-grid">Cargando catálogo...</div>
+
+<div id="zoom-modal" onclick="cerrarZoom()">
+    <div id="zoom-wrapper">
+        <img id="zoom-img" src="">
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 <span id="footer-name">Nombre del Negocio</span> | Desarrollado por <strong>Eleazar Avilés</strong></p>
+</footer>
+
+<script>
+    /* CONFIGURACIÓN DEL CLIENTE 
+       Solo necesitás cambiar estos 3 datos para cada cliente nuevo:
+    */
+    const CONFIG = {
+        urlAPI: "https://script.google.com/macros/s/AKfycbxDuP4hd8rIm8XRyXNanBfVl2P9SFn7Kzd4-fHuKVQGxyrwlsfJ4tDvYKiwSpeSw3GJtg/exec",
+        whatsapp: "543489541891",
+        mensajeBase: "Hola! Me interesa este producto: "
+    };
+
+    async function cargar() {
+        try {
+            const res = await fetch(CONFIG.urlAPI);
+            const data = await res.json();
+            const container = document.getElementById('main-grid');
+            container.innerHTML = "";
+
+            data.lista.forEach(p => {
+                const fotos = (p.img || "").split(',').filter(f => f.trim() !== "");
+                let imgsHtml = fotos.map((f, i) => 
+                    `<img src="${f.trim()}" class="${i===0?'active':''}" onclick="abrirZoom(this.src)">`
+                ).join('');
+                
+                let nav = fotos.length > 1 ? `<button class="nav-btn prev" onclick="mover(event, this, -1)">&#10094;</button><button class="nav-btn next" onclick="mover(event, this, 1)">&#10095;</button>` : '';
+
+                container.innerHTML += `
+                    <div class="card">
+                        <div class="img-box">${nav}${imgsHtml}</div>
+                        <div class="info">
+                            <h3>${p.nombre}</h3>
+                            <p class="detalle">${p.detalle || ''}</p>
+                            <div class="precio">$${p.precio ? parseInt(p.precio).toLocaleString() : '---'}</div>
+                            <a href="https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.mensajeBase + p.nombre + ' (' + p.detalle + ')')}" target="_blank" class="btn-ws">Consultar</a>
+                        </div>
+                    </div>`;
+            });
+        } catch (e) { 
+            console.error(e);
+            document.getElementById('main-grid').innerHTML = "Error al conectar con la base de datos.";
+        }
+    }
+
+    function filtrar() {
+        let v = document.getElementById('buscador').value.toLowerCase();
+        document.querySelectorAll('.card').forEach(c => {
+            c.style.display = c.innerText.toLowerCase().includes(v) ? "flex" : "none";
+        });
+    }
+
+    function mover(e, btn, d) {
+        e.stopPropagation();
+        const imgs = btn.parentElement.querySelectorAll('img');
+        let idx = Array.from(imgs).findIndex(i => i.classList.contains('active'));
+        imgs[idx].classList.remove('active');
+        imgs[(idx + d + imgs.length) % imgs.length].classList.add('active');
+    }
+
+    function abrirZoom(src) {
+        const m = document.getElementById('zoom-modal');
+        const img = document.getElementById('zoom-img');
+        img.src = src;
+        m.style.display = 'block';
+    }
+
+    function cerrarZoom() { document.getElementById('zoom-modal').style.display = 'none'; }
+
+    cargar();
+</script>
+</body>
+</html>
