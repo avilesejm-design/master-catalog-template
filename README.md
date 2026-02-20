@@ -1,41 +1,41 @@
-# 📊 Master Catalog Template - Smart L&D Resource Library
+Mil disculpas, tienes toda la razón. He eliminado completamente los rastros de las etiquetas internas para que puedas copiar y pegar el contenido directamente en tus archivos de GitHub.
 
-**Master Catalog Template** es una solución de arquitectura "Lean" diseñada para departamentos de Learning & Development (L&D) que necesitan gestionar bibliotecas de recursos o catálogos de cursos de forma ágil, dinámica y sin costos de infraestructura.
+Aquí tienes la versión limpia y profesional del Master Catalog Template:
 
----
+📊 Master Catalog Template - Smart L&D Resource Library
+Master Catalog Template is a "Lean Architecture" solution designed for Learning & Development (L&D) departments that need to manage resource libraries or course catalogs dynamically, without infrastructure costs or technical complexity.
 
-## 🚀 Live Demo
-🔗 [Ver Demo del Proyecto](https://avilesejm-design.github.io/master-catalog-template/)
+🚀 Live Demo
+🔗 View Project Demo
 
----
+🎯 Strategic Value (UX for L&D)
+In corporate environments, agility is paramount. This tool eliminates the friction between data management and final user visualization:
 
-## 🎯 ¿Por qué esta solución? (UX para L&D)
-En entornos corporativos, la agilidad es clave. Esta herramienta elimina la fricción entre la gestión de datos y la visualización del usuario final [cite: 2026-02-18]:
+Decentralized Management: Administrators update content directly via Google Sheets, removing the need for technical knowledge or GitHub access.
 
-* **Gestión Descentralizada**: El administrador actualiza el contenido directamente desde **Google Sheets**, sin necesidad de conocimientos técnicos o acceso a GitHub.
-* **Búsqueda Adaptativa**: Filtrado instantáneo que permite a los colaboradores encontrar materiales de capacitación en milisegundos, mejorando la experiencia de aprendizaje.
-* **Costo Cero**: Arquitectura "Backend-less" que aprovecha herramientas gratuitas para ofrecer un rendimiento de nivel empresarial sin gastos de mantenimiento.
+Adaptive Search: Instant filtering allows employees to find training materials in milliseconds, significantly enhancing the learning experience.
 
----
+Zero-Cost Maintenance: A "Backend-less" architecture that leverages free professional tools to deliver enterprise-grade performance without operational expenses.
 
-## ✨ UX Highlights
-* **Zero-Friction Updates**: Actualización sincrónica. Editas la planilla y el catálogo cambia automáticamente para todos los usuarios.
-* **Mobile First Design**: Interfaz 100% responsive, optimizada para el acceso a recursos desde dispositivos móviles en cualquier momento (Just-in-time learning).
-* **Clean Interface**: Jerarquía visual clara para reducir la carga cognitiva del estudiante durante la navegación [cite: 2026-02-18].
+✨ UX Highlights
+Zero-Friction Updates: Synchronous updating logic. Edit the spreadsheet, and the catalog updates automatically for all users worldwide.
 
----
+Mobile-First Design: 100% responsive interface, optimized for "Just-in-time learning" across all mobile devices.
 
-## 🛠️ Stack Tecnológico
-* **Frontend**: HTML5, CSS3 (Modern UI) y JavaScript ES6+ para la lógica de filtrado.
-* **Data Layer**: Google Sheets API como CMS dinámico.
-* **Deployment**: GitHub Pages para hosting gratuito y seguro.
+Reduced Cognitive Load: Clear visual hierarchy designed to help students focus on content discovery rather than navigation.
 
----
+🛠️ Tech Stack
+Frontend: HTML5, CSS3 (Modern UI), and Vanilla JavaScript (ES6+) for high-speed filtering logic.
 
-## ⚙️ Instalación y Uso
-1. Clona este repositorio.
-2. Vincula tu propio ID de Google Sheet en la configuración del script principal.
-3. Personaliza los estilos en el archivo CSS para alinearlos con el branding de tu organización.
+Data Layer: Google Sheets API acting as a dynamic, real-time CMS.
 
----
-Creado por [avilesejm-design](https://github.com/avilesejm-design) | Enfocado en soluciones innovadoras para Learning & Development [cite: 2026-02-18].
+Deployment: GitHub Pages for secure, free, and reliable hosting.
+
+⚙️ Setup & Customization
+Clone this repository.
+
+Link your own Google Sheet ID in the main script configuration.
+
+Customize the CSS variables to align the interface with your organization's branding guidelines.
+
+Developed by avilesejm-design | Innovative solutions for Learning & Development ecosystems.
