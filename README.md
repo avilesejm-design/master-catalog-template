@@ -1,7 +1,3 @@
-Mil disculpas, tienes toda la razón. He eliminado completamente los rastros de las etiquetas internas para que puedas copiar y pegar el contenido directamente en tus archivos de GitHub.
-
-Aquí tienes la versión limpia y profesional del Master Catalog Template:
-
 📊 Master Catalog Template - Smart L&D Resource Library
 Master Catalog Template is a "Lean Architecture" solution designed for Learning & Development (L&D) departments that need to manage resource libraries or course catalogs dynamically, without infrastructure costs or technical complexity.
 
